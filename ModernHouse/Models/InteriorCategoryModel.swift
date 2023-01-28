@@ -8,8 +8,9 @@
 import UIKit
 
 struct InteriorCategoryModel{
-    let nameOfCategory: String
-    let iconOfCategory: UIImage?
+    var category: InteriorCategoryEnum
+    var isSelected = false
+  
 }
 
 enum InteriorCategoryEnum{
@@ -26,7 +27,7 @@ enum InteriorCategoryEnum{
     var icon: UIImage? {
         switch self {
         case .furniture: return UIImage(systemName: "trash")
-        case .color: return UIImage(systemName: "trash")
+        case .color: return UIImage(systemName: "paintpalette.fill")
         case .pattern: return UIImage(systemName: "trash")
         }
     }

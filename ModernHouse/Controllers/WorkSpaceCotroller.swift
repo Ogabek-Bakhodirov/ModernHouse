@@ -10,13 +10,11 @@ import SceneKit
 
 class WorkSpaceCotroller: UIViewController{
     
-    var categoryEnum: [InteriorCategoryEnum] = [.furniture, .color, .pattern]
-    
-//    [
-//        InteriorCategoryModel(nameOfCategory: "Furniture", iconOfCategory: UIImage(systemName: "trash")),
-//        InteriorCategoryModel(nameOfCategory: "Color", iconOfCategory: UIImage(systemName: "trash")),
-//        InteriorCategoryModel(nameOfCategory: "Pattern", iconOfCategory: UIImage(systemName: "trash"))
-//    ]
+    var categoryModel: [InteriorCategoryModel] =  [
+        InteriorCategoryModel(category: .furniture),
+        InteriorCategoryModel(category: .color),
+        InteriorCategoryModel(category: .pattern)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,25 +29,23 @@ class WorkSpaceCotroller: UIViewController{
     }
     
     func setInteriorCategories(){
-//        let collectionView = UIView(frame: CGRect(x: 0, y: universalHeight(60), width: windowWidth, height: universalHeight(80)))
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: universalWidth(60), height: universalWidth(60))
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: universalWidth(90), height: universalWidth(70))
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: universalHeight(60), width: windowWidth, height: universalHeight(80)), collectionViewLayout: layout)
-        collectionView.backgroundColor = .lightGray
-//        collectionView.register(GSACategorycell.self,  forCellWithReuseIdentifier: "GSACategorycell")
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: universalHeight(60), width: windowWidth, height: universalHeight(90)), collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.register(InteriorCategoryCell.self,  forCellWithReuseIdentifier: "InteriorCategoryCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsHorizontalScrollIndicator = false
         self.view.addSubview(collectionView)
     }
     
     func setSceneKit(){
         let sceneKitView = SCNView(frame: CGRect(x: universalWidth(10), y: universalHeight(150), width: windowWidth - universalWidth(20), height: universalHeight(450)))
-        sceneKitView.backgroundColor = .lightGray //.withAlphaComponent(0.5)
+        sceneKitView.backgroundColor = #colorLiteral(red: 0.8409659266, green: 0.8310413957, blue: 0.8827342391, alpha: 1) 
         sceneKitView.layer.cornerRadius = 25
                 
         let scene = SCNScene() //named: "emptyRoom3D.scn""
@@ -83,7 +79,7 @@ class WorkSpaceCotroller: UIViewController{
     
     func setInteriors(){
         let collectionView = UIView(frame: CGRect(x: universalWidth(10), y: universalHeight(610), width: windowWidth - universalWidth(20), height: universalHeight(100)))
-        collectionView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+        collectionView.backgroundColor = #colorLiteral(red: 0.8409659266, green: 0.8310413957, blue: 0.8827342391, alpha: 1)
         collectionView.layer.cornerRadius = 25
         self.view.addSubview(collectionView)
     }
@@ -91,11 +87,27 @@ class WorkSpaceCotroller: UIViewController{
 
 extension WorkSpaceCotroller: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryEnum.count
+        return categoryModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InteriorCategoryCell", for: indexPath) as? InteriorCategoryCell else { return UICollectionViewCell()}
+        cell.setupCategory(model: categoryModel[indexPath.row])
+        
+        cell.onAction = { model in
+            var id = 0 
+            for mode in self.categoryModel{
+                if mode.category == model {
+                    self.categoryModel[id].isSelected = true
+                } else {
+                    self.categoryModel[id].isSelected = false
+                }
+                id += 1
+            }
+            collectionView.reloadData()
+        }
+        
+        return cell
     }
     
 }

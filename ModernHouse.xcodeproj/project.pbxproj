@@ -17,6 +17,7 @@
 		80BE0D232985060400433CD8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D222985060400433CD8 /* Globals.swift */; };
 		80BE0D27298516B800433CD8 /* SceneKitFiles.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BE0D26298516B800433CD8 /* SceneKitFiles.scnassets */; };
 		80BE0D30298538B900433CD8 /* InteriorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D2F298538B900433CD8 /* InteriorCategoryModel.swift */; };
+		80BE0D332985469400433CD8 /* InteriorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D322985469400433CD8 /* InteriorCategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		80BE0D222985060400433CD8 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		80BE0D26298516B800433CD8 /* SceneKitFiles.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = SceneKitFiles.scnassets; sourceTree = "<group>"; };
 		80BE0D2F298538B900433CD8 /* InteriorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorCategoryModel.swift; sourceTree = "<group>"; };
+		80BE0D322985469400433CD8 /* InteriorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorCategoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				80BE0D2E298538A500433CD8 /* Models */,
+				80BE0D31298545A800433CD8 /* Controllers */,
+				80BE0D342985469A00433CD8 /* Cells */,
 				80BE0D0A2984E7C100433CD8 /* AppDelegate.swift */,
-				80BE0D0E2984E7C100433CD8 /* TabbarController.swift */,
-				80BE0D1E2984FEC100433CD8 /* WorkSpaceCotroller.swift */,
-				80BE0D202984FEF200433CD8 /* AboutAppController.swift */,
 				80BE0D102984E7C100433CD8 /* Main.storyboard */,
 				80BE0D132984E7C200433CD8 /* Assets.xcassets */,
 				80BE0D26298516B800433CD8 /* SceneKitFiles.scnassets */,
@@ -85,6 +86,24 @@
 				80BE0D2F298538B900433CD8 /* InteriorCategoryModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		80BE0D31298545A800433CD8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80BE0D202984FEF200433CD8 /* AboutAppController.swift */,
+				80BE0D1E2984FEC100433CD8 /* WorkSpaceCotroller.swift */,
+				80BE0D0E2984E7C100433CD8 /* TabbarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		80BE0D342985469A00433CD8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				80BE0D322985469400433CD8 /* InteriorCategoryCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BE0D1F2984FEC100433CD8 /* WorkSpaceCotroller.swift in Sources */,
+				80BE0D332985469400433CD8 /* InteriorCategoryCell.swift in Sources */,
 				80BE0D30298538B900433CD8 /* InteriorCategoryModel.swift in Sources */,
 				80BE0D0F2984E7C100433CD8 /* TabbarController.swift in Sources */,
 				80BE0D0B2984E7C100433CD8 /* AppDelegate.swift in Sources */,
