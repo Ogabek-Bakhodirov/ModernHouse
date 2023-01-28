@@ -10,7 +10,19 @@ import UIKit
 struct InteriorCategoryModel{
     var category: InteriorCategoryEnum
     var isSelected = false
-  
+    var identifier: Int
+    
+    static var identifierFactory = 0
+    
+    private static func getUniqueIdentifier() -> Int {
+        identifierFactory += 1
+        return identifierFactory
+    }
+    
+    init(category: InteriorCategoryEnum) {
+        self.category = category
+        self.identifier = Self.getUniqueIdentifier()
+    }
 }
 
 enum InteriorCategoryEnum{
@@ -26,9 +38,9 @@ enum InteriorCategoryEnum{
     
     var icon: UIImage? {
         switch self {
-        case .furniture: return UIImage(systemName: "trash")
+        case .furniture: return UIImage(named: "sofa")
         case .color: return UIImage(systemName: "paintpalette.fill")
-        case .pattern: return UIImage(systemName: "trash")
+        case .pattern: return UIImage(named: "pattern")
         }
     }
 }

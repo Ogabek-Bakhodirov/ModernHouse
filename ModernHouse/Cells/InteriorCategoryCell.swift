@@ -9,7 +9,7 @@ import UIKit
 
 class InteriorCategoryCell: UICollectionViewCell{
     
-    var onAction: ((InteriorCategoryEnum?) -> Void)?
+    var onAction: ((InteriorCategoryModel?) -> Void)?
     
     var model: InteriorCategoryModel?
     
@@ -34,6 +34,7 @@ class InteriorCategoryCell: UICollectionViewCell{
         let mainImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: mainView.frame.width, height: mainView.frame.width  - universalWidth(50)))
         mainImageView.image = model.category.icon
         mainImageView.backgroundColor = .clear
+        mainImageView.image = mainImageView.image?.withRenderingMode(.alwaysTemplate)       
         mainImageView.tintColor = model.isSelected ? .white : .black
         mainImageView.contentMode = .scaleAspectFit
         mainView.addSubview(mainImageView)
@@ -47,7 +48,7 @@ class InteriorCategoryCell: UICollectionViewCell{
     }
     
     @objc func iconTapped(){
-        self.onAction?(model?.category)
+        self.onAction?(model)
     }
     
     required init?(coder: NSCoder) {
