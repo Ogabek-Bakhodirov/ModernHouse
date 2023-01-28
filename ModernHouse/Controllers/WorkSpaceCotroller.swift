@@ -95,12 +95,16 @@ extension WorkSpaceCotroller: UICollectionViewDelegate, UICollectionViewDataSour
         cell.setupCategory(model: categoryModel[indexPath.row])
         
         cell.onAction = { model in
-            for mode in self.categoryModel{
-                if mode.identifier == model?.identifier {
-                    self.categoryModel[mode.identifier-1].isSelected = true
-                } else {
-                    self.categoryModel[mode.identifier-1].isSelected = false
+            if model?.isSelected == false {
+                for mode in self.categoryModel{
+                    if mode.identifier == model?.identifier {
+                        self.categoryModel[mode.identifier-1].isSelected = true
+                    } else {
+                        self.categoryModel[mode.identifier-1].isSelected = false
+                    }
                 }
+            } else {
+                self.categoryModel[model!.identifier - 1].isSelected = false
             }
             collectionView.reloadData()
         }
