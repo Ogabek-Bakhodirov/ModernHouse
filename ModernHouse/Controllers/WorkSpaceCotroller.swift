@@ -97,11 +97,7 @@ extension WorkSpaceCotroller: UICollectionViewDelegate, UICollectionViewDataSour
         cell.onAction = { model in
             if model?.isSelected == false {
                 for mode in self.categoryModel{
-                    if mode.identifier == model?.identifier {
-                        self.categoryModel[mode.identifier-1].isSelected = true
-                    } else {
-                        self.categoryModel[mode.identifier-1].isSelected = false
-                    }
+                    self.categoryModel[mode.identifier-1].isSelected = (mode.identifier == model?.identifier)
                 }
             } else {
                 self.categoryModel[model!.identifier - 1].isSelected = false
