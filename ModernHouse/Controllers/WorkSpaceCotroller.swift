@@ -11,8 +11,8 @@ import SceneKit
 class WorkSpaceCotroller: UIViewController{
     
     var categoryModel: [InteriorCategoryModel] =  [
+        InteriorCategoryModel(category: .color, isSelected: true),
         InteriorCategoryModel(category: .furniture),
-        InteriorCategoryModel(category: .color),
         InteriorCategoryModel(category: .pattern)
     ]
     
@@ -45,7 +45,7 @@ class WorkSpaceCotroller: UIViewController{
     
     func setSceneKit(){
         let sceneKitView = SCNView(frame: CGRect(x: universalWidth(10), y: universalHeight(150), width: windowWidth - universalWidth(20), height: universalHeight(450)))
-        sceneKitView.backgroundColor = #colorLiteral(red: 0.8409659266, green: 0.8310413957, blue: 0.8827342391, alpha: 1) 
+        sceneKitView.backgroundColor = .lightGreen
         sceneKitView.layer.cornerRadius = 25
                 
         let scene = SCNScene() //named: "emptyRoom3D.scn""
@@ -74,14 +74,33 @@ class WorkSpaceCotroller: UIViewController{
         sceneKitView.allowsCameraControl = true
         sceneKitView.cameraControlConfiguration.allowsTranslation = false
         sceneKitView.scene = scene
-        self.view.addSubview(sceneKitView)
+//        self.view.addSubview(sceneKitView)
+        
+        let houseImg = UIImageView(frame: CGRect(x: universalWidth(10), y: universalHeight(150), width: windowWidth - universalWidth(20), height: universalHeight(450)))
+        houseImg.image = UIImage(named: "3dHouse")
+        houseImg.contentMode = .scaleAspectFill
+        houseImg.backgroundColor = .white
+        self.view.addSubview(houseImg)
     }
     
+    //TODO: change size like 610
     func setInteriors(){
-        let collectionView = UIView(frame: CGRect(x: universalWidth(10), y: universalHeight(610), width: windowWidth - universalWidth(20), height: universalHeight(100)))
-        collectionView.backgroundColor = #colorLiteral(red: 0.8409659266, green: 0.8310413957, blue: 0.8827342391, alpha: 1)
-        collectionView.layer.cornerRadius = 25
-        self.view.addSubview(collectionView)
+        let interiorValueView = InteriorValueView(frame: CGRect(x: universalWidth(10), y: universalHeight(610), width: windowWidth - universalWidth(20), height: universalHeight(100)))
+        interiorValueView.backgroundColor = .lightGreen
+        interiorValueView.layer.cornerRadius = 25
+        self.view.addSubview(interiorValueView)
+        
+        let backButton = UIButton(frame: CGRect(x: universalWidth(20), y: interiorValueView.frame.maxY + 20, width: windowWidth - universalWidth(40), height: universalWidth(40)))
+        backButton.backgroundColor = .darkGreen
+        backButton.layer.cornerRadius = 18
+        backButton.setTitle("Back", for: .normal)
+        backButton.setTitleColor(.white, for: .normal)
+        backButton.addTarget(self, action: #selector(generateTapped), for: .touchUpInside)
+        self.view.addSubview(backButton)
+    }
+    
+    @objc func generateTapped(){
+        dismiss(animated: true)
     }
 }
 
@@ -100,12 +119,10 @@ extension WorkSpaceCotroller: UICollectionViewDelegate, UICollectionViewDataSour
                     self.categoryModel[mode.identifier-1].isSelected = (mode.identifier == model?.identifier)
                 }
             } else {
-                self.categoryModel[model!.identifier - 1].isSelected = false
+                self.categoryModel[model!.identifier-1].isSelected = false
             }
             collectionView.reloadData()
         }
-        
         return cell
     }
-    
 }

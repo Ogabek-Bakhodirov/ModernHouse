@@ -19,6 +19,12 @@
 		80BE0D30298538B900433CD8 /* InteriorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D2F298538B900433CD8 /* InteriorCategoryModel.swift */; };
 		80BE0D332985469400433CD8 /* InteriorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D322985469400433CD8 /* InteriorCategoryCell.swift */; };
 		80BE0D36298575F200433CD8 /* InteriorValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D35298575F200433CD8 /* InteriorValueCell.swift */; };
+		80BE0D382985A4DA00433CD8 /* InteriorValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D372985A4DA00433CD8 /* InteriorValueView.swift */; };
+		80BE0D3B29863DCE00433CD8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D3A29863DCE00433CD8 /* HomeViewController.swift */; };
+		80BE0D3D2986408600433CD8 /* ModernHouseBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D3C2986408600433CD8 /* ModernHouseBannerCell.swift */; };
+		80BE0D3F2986472500433CD8 /* HomeSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D3E2986472500433CD8 /* HomeSizeCell.swift */; };
+		80BE0D4129864ABF00433CD8 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D4029864ABF00433CD8 /* TextFieldView.swift */; };
+		80BE0D4329866C1F00433CD8 /* CategoryValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE0D4229866C1F00433CD8 /* CategoryValueModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,12 @@
 		80BE0D2F298538B900433CD8 /* InteriorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorCategoryModel.swift; sourceTree = "<group>"; };
 		80BE0D322985469400433CD8 /* InteriorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorCategoryCell.swift; sourceTree = "<group>"; };
 		80BE0D35298575F200433CD8 /* InteriorValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorValueCell.swift; sourceTree = "<group>"; };
+		80BE0D372985A4DA00433CD8 /* InteriorValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorValueView.swift; sourceTree = "<group>"; };
+		80BE0D3A29863DCE00433CD8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		80BE0D3C2986408600433CD8 /* ModernHouseBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHouseBannerCell.swift; sourceTree = "<group>"; };
+		80BE0D3E2986472500433CD8 /* HomeSizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSizeCell.swift; sourceTree = "<group>"; };
+		80BE0D4029864ABF00433CD8 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		80BE0D4229866C1F00433CD8 /* CategoryValueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryValueModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,7 @@
 				80BE0D2E298538A500433CD8 /* Models */,
 				80BE0D31298545A800433CD8 /* Controllers */,
 				80BE0D342985469A00433CD8 /* Cells */,
+				80BE0D392985A4EA00433CD8 /* View */,
 				80BE0D0A2984E7C100433CD8 /* AppDelegate.swift */,
 				80BE0D102984E7C100433CD8 /* Main.storyboard */,
 				80BE0D132984E7C200433CD8 /* Assets.xcassets */,
@@ -86,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				80BE0D2F298538B900433CD8 /* InteriorCategoryModel.swift */,
+				80BE0D4229866C1F00433CD8 /* CategoryValueModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -93,6 +107,7 @@
 		80BE0D31298545A800433CD8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				80BE0D3A29863DCE00433CD8 /* HomeViewController.swift */,
 				80BE0D202984FEF200433CD8 /* AboutAppController.swift */,
 				80BE0D1E2984FEC100433CD8 /* WorkSpaceCotroller.swift */,
 				80BE0D0E2984E7C100433CD8 /* TabbarController.swift */,
@@ -105,8 +120,19 @@
 			children = (
 				80BE0D322985469400433CD8 /* InteriorCategoryCell.swift */,
 				80BE0D35298575F200433CD8 /* InteriorValueCell.swift */,
+				80BE0D3C2986408600433CD8 /* ModernHouseBannerCell.swift */,
+				80BE0D3E2986472500433CD8 /* HomeSizeCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		80BE0D392985A4EA00433CD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80BE0D372985A4DA00433CD8 /* InteriorValueView.swift */,
+				80BE0D4029864ABF00433CD8 /* TextFieldView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,11 +208,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BE0D1F2984FEC100433CD8 /* WorkSpaceCotroller.swift in Sources */,
+				80BE0D4329866C1F00433CD8 /* CategoryValueModel.swift in Sources */,
 				80BE0D332985469400433CD8 /* InteriorCategoryCell.swift in Sources */,
+				80BE0D3D2986408600433CD8 /* ModernHouseBannerCell.swift in Sources */,
 				80BE0D30298538B900433CD8 /* InteriorCategoryModel.swift in Sources */,
 				80BE0D36298575F200433CD8 /* InteriorValueCell.swift in Sources */,
+				80BE0D3F2986472500433CD8 /* HomeSizeCell.swift in Sources */,
 				80BE0D0F2984E7C100433CD8 /* TabbarController.swift in Sources */,
+				80BE0D3B29863DCE00433CD8 /* HomeViewController.swift in Sources */,
+				80BE0D382985A4DA00433CD8 /* InteriorValueView.swift in Sources */,
 				80BE0D0B2984E7C100433CD8 /* AppDelegate.swift in Sources */,
+				80BE0D4129864ABF00433CD8 /* TextFieldView.swift in Sources */,
 				80BE0D232985060400433CD8 /* Globals.swift in Sources */,
 				80BE0D212984FEF200433CD8 /* AboutAppController.swift in Sources */,
 			);

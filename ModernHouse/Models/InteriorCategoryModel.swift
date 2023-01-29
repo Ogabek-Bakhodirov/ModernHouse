@@ -19,7 +19,7 @@ struct InteriorCategoryModel{
         return identifierFactory
     }
     
-    init(category: InteriorCategoryEnum) {
+    init(category: InteriorCategoryEnum, isSelected: Bool = false) {
         self.category = category
         self.identifier = Self.getUniqueIdentifier()
     }

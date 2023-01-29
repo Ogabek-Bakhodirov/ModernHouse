@@ -10,29 +10,19 @@ import UIKit
 class InteriorValueCell: UICollectionViewCell {
     
     
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
     }
     
-    func setupCategory(){
-                
-//        let mainView = UIView(frame: CGRect(x: universalWidth(15), y: 0, width: self.contentView.frame.width - universalWidth(15), height: self.contentView.frame.height))
-//        mainView.backgroundColor = .white
-//        mainView.layer.cornerRadius = 12
-//        mainView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconTapped)))
-//        mainView.isUserInteractionEnabled = true
-//        mainView.layer.borderWidth = 1
-//        mainView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-//        mainView.layer.cornerRadius = 16
-//        self.contentView.addSubview(mainView)
-        
-//        let mainImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: mainView.frame.width, height: mainView.frame.width  - universalWidth(50)))
+    func setupCategory(color: UIColor){
         let mainImageView = UIImageView(frame: CGRect(x: universalWidth(15), y: 0, width: self.contentView.frame.width - universalWidth(15), height: self.contentView.frame.height))
 //        mainImageView.image = model.category.icon
-        mainImageView.backgroundColor = .clear
+        mainImageView.backgroundColor = color
         mainImageView.image = mainImageView.image?.withRenderingMode(.alwaysTemplate)       
-//        mainImageView.tintColor = model.isSelected ? .white : .black
+//        mainImageView.tintColor = color
         mainImageView.contentMode = .scaleAspectFit
+        mainImageView.layer.cornerRadius = 12
         self.contentView.addSubview(mainImageView)
         
     }
@@ -46,3 +36,34 @@ class InteriorValueCell: UICollectionViewCell {
     }
 }
 
+//func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    
+//    if scrollView == self.tableView {
+//        
+//        let fullHeight: CGFloat = scrollView.contentOffset.y
+//        
+//        if fullHeight >= 0 {
+//            self.tableBackGroundView.centerY = self.tableBackGroundCenterY - fullHeight
+//        }
+//        print(fullHeight)
+//        if fullHeight >= 300 {
+//            if nil == self.headerView.superview {
+//                self.view.addSubview(self.headerView)
+//            }
+//            let alpha: CGFloat = fullHeight - 300
+//            switch alpha {
+//            case 0 ..< 10 : self.headerView.alpha = (alpha/50)
+//            case 10 ..< 20 : self.headerView.alpha = (alpha/50)
+//            case 20 ..< 30 : self.headerView.alpha = (alpha/50)
+//            case 30 ..< 40 : self.headerView.alpha = (alpha/50)
+//            case 40 ... 50 : self.headerView.alpha = (alpha/50)
+//            case 51 ... 150: self.headerView.alpha = 1.0
+//            default : break
+//            }
+//        } else {
+//            if nil != self.headerView.superview {
+//                self.headerView.removeFromSuperview()
+//            }
+//        }
+//    }
+//}

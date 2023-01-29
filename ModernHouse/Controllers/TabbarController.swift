@@ -20,7 +20,7 @@ class TabbarController: UITabBarController {
         mainViewItem.title = "Work space"
         mainViewItem.image = UIImage.init(systemName: "pencil.line")
         
-        let mainViewController = WorkSpaceCotroller()
+        let mainViewController = HomeViewController() //WorkSpaceCotroller()
         mainViewController.tabBarItem = mainViewItem
         
         let aboutAppItem = UITabBarItem()
