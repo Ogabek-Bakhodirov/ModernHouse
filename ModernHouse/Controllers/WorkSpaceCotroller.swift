@@ -10,16 +10,24 @@ import SceneKit
 
 class WorkSpaceCotroller: UIViewController{
     
-    var categoryModel: [InteriorCategoryModel] =  [
-        InteriorCategoryModel(category: .color, isSelected: true),
-        InteriorCategoryModel(category: .furniture),
-        InteriorCategoryModel(category: .pattern)
-    ]
+    lazy var categoryModel: [InteriorCategoryModel] = [
+        InteriorCategoryModel(category: .color, identifier: getUniqueIdentifier(), isSelected: true),
+        InteriorCategoryModel(category: .furniture, identifier: getUniqueIdentifier()),
+        InteriorCategoryModel(category: .pattern, identifier: getUniqueIdentifier())
+    ] 
+    
+    var identifierFactory = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         initViews()
+    }
+    
+    private func getUniqueIdentifier() -> Int {
+        identifierFactory += 1
+        return identifierFactory
     }
     
     func initViews(){
@@ -114,12 +122,13 @@ extension WorkSpaceCotroller: UICollectionViewDelegate, UICollectionViewDataSour
         cell.setupCategory(model: categoryModel[indexPath.row])
         
         cell.onAction = { model in
+            print(model?.identifier)
             if model?.isSelected == false {
                 for mode in self.categoryModel{
-                    self.categoryModel[mode.identifier-1].isSelected = (mode.identifier == model?.identifier)
+                    self.categoryModel[mode.identifier].isSelected = (mode.identifier == model?.identifier)
                 }
             } else {
-                self.categoryModel[model!.identifier-1].isSelected = false
+                self.categoryModel[model!.identifier].isSelected = false
             }
             collectionView.reloadData()
         }

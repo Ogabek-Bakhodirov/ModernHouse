@@ -12,16 +12,11 @@ struct InteriorCategoryModel{
     var isSelected = false
     var identifier: Int
     
-    static var identifierFactory = 0
     
-    private static func getUniqueIdentifier() -> Int {
-        identifierFactory += 1
-        return identifierFactory
-    }
     
-    init(category: InteriorCategoryEnum, isSelected: Bool = false) {
+    init(category: InteriorCategoryEnum, identifier: Int, isSelected: Bool = false) {
         self.category = category
-        self.identifier = Self.getUniqueIdentifier()
+        self.identifier = identifier
     }
 }
 
