@@ -57,38 +57,56 @@ class WorkSpaceCotroller: UIViewController{
         sceneKitView.layer.cornerRadius = 25
                 
         let scene = SCNScene() //named: "emptyRoom3D.scn""
-
+        sceneKitView.scene = scene
+        
+        let camera = SCNCamera()
         let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()       
+        cameraNode.camera = camera      
         cameraNode.position = SCNVector3(x: 0, y: 10, z: 35)
         
-        scene.rootNode.addChildNode(cameraNode)
-        
 //         5: Adding light to scene
+        let light = SCNLight()
         let lightNode = SCNNode()
-        lightNode.light = SCNLight()
+        lightNode.light = light
         lightNode.light?.type = .omni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 35)
-        scene.rootNode.addChildNode(lightNode)
+        
+        let cubeGeometry = SCNBox(width: 10, height: 10, length: 10, chamferRadius: 1)
+        let cubeNode = SCNNode(geometry: cubeGeometry)
+        
            
 //         6: Creating and adding ambien light to scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light?.type = .ambient
         ambientLightNode.light?.color = UIColor.darkGray
+        
+        let planeGeometry = SCNPlane(width: 50.0, height: 50.0)
+        let planeNode = SCNNode(geometry: planeGeometry)
+        planeNode.eulerAngles = SCNVector3(x: GLKMathDegreesToRadians(-90), y: 0, z: 0)
+        planeNode.position = SCNVector3(x: 0, y: -0.5, z: 0)
+        
+        planeNode.position = SCNVector3(x: 0, y: -0.5, z: 0)
+        let redMaterial = SCNMaterial()
+        redMaterial.diffuse.contents = UIColor.red
+        cubeGeometry.materials = [redMaterial]
+        
+        let greenMaterial = SCNMaterial()
+        greenMaterial.diffuse.contents = UIColor.green
+        planeGeometry.materials = [greenMaterial]
+        
+        let constraint = SCNLookAtConstraint(target: cubeNode)
+        
+        scene.rootNode.addChildNode(cameraNode)
+        scene.rootNode.addChildNode(lightNode)
+        scene.rootNode.addChildNode(cubeNode)
         scene.rootNode.addChildNode(ambientLightNode)
+        scene.rootNode.addChildNode(planeNode)
         
         sceneKitView.showsStatistics = true
         sceneKitView.allowsCameraControl = true
         sceneKitView.cameraControlConfiguration.allowsTranslation = false
-        sceneKitView.scene = scene
-//        self.view.addSubview(sceneKitView)
-        
-        let houseImg = UIImageView(frame: CGRect(x: universalWidth(10), y: universalHeight(150), width: windowWidth - universalWidth(20), height: universalHeight(450)))
-        houseImg.image = UIImage(named: "3dHouse")
-        houseImg.contentMode = .scaleAspectFill
-        houseImg.backgroundColor = .white
-        self.view.addSubview(houseImg)
+        self.view.addSubview(sceneKitView)
     }
     
     //TODO: change size like 610

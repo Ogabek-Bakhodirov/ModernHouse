@@ -71,7 +71,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row{
         case 0: return windowHeight / 4
-        case 1,2,3,4: return universalHeight(100)
+        case 1,2,3,4: return universalHeight(120)
         default: return 0
         }
     }

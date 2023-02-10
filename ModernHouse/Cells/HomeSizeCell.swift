@@ -26,7 +26,7 @@ class HomeSizeCell: UITableViewCell{
         
         let textField = TextFieldView(frame: CGRect(x: universalWidth(20), y: title.frame.maxY + 15, width: universalWidth(70), height: 30), title: "Width")
         textField.isUserInteractionEnabled = true
-        mainView.addSubview(textField)
+        self.contentView.addSubview(textField)
     }
     
     required init?(coder: NSCoder) {
